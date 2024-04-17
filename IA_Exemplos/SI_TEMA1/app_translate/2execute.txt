@@ -1,0 +1,9 @@
+# Define o texto que queremos traduzir
+texto_original = "Sou aluno da disciplina de Sistemas Inteligentes! Você já ouviu falar nesta disciplina?"
+
+# Traduz o texto para o inglês
+texto_traduzido = translator.translate(texto_original, dest='en')
+
+# Imprime o texto traduzido
+print("Texto Original:", texto_original)
+print("Texto Traduzido para Inglês:", texto_traduzido.text)

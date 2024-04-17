@@ -1,0 +1,16 @@
+# Instala a biblioteca googlesearch-python
+#!pip install google
+
+# Importa a classe search da biblioteca googlesearch
+from googlesearch import search
+
+# Termo de pesquisa
+termo_pesquisa = "Aprendizado máquina"
+
+# Realiza a pesquisa no Google e armazena os resultados
+resultados = search(termo_pesquisa, num=6, stop=6, pause=2)
+
+# Exibe os tópicos correlatos e sinônimos encontrados nos resultados da pesquisa
+print("Tópicos correlatos e sinônimos para o termo de pesquisa '" + termo_pesquisa + "':")
+for idx, resultado in enumerate(resultados):
+    print(f"{idx + 1}. {resultado}")

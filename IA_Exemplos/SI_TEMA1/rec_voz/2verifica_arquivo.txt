@@ -1,0 +1,11 @@
+import wave
+
+# Nome do arquivo de áudio a ser transcrito
+arquivo_audio = "audio.wav"  # Altere para o nome do arquivo de áudio que você possui
+
+try:
+    with wave.open(arquivo_audio, "rb") as wf:
+        # Realize operações com o arquivo de áudio aqui
+        print("Arquivo de áudio aberto com sucesso!")
+except Exception as e:
+    print("Erro ao abrir o arquivo de áudio:", e)

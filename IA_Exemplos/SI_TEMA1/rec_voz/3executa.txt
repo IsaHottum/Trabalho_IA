@@ -1,0 +1,21 @@
+import speech_recognition as sr
+
+def transcrever_audio(arquivo):
+    recognizer = sr.Recognizer()
+
+    with sr.AudioFile(arquivo) as source:
+        audio_data = recognizer.record(source)
+
+    try:
+        texto_transcrito = recognizer.recognize_google(audio_data, language="pt-BR")
+        print("Texto transcrito:", texto_transcrito)
+    except sr.UnknownValueError:
+        print("Não foi possível entender a fala")
+    except sr.RequestError as e:
+        print("Erro ao solicitar a API do Google Speech Recognition; {0}".format(e))
+
+# Nome do arquivo de áudio a ser transcrito
+arquivo_audio = "audio.wav"  # Altere para o nome do arquivo de áudio que você possui
+
+# Realizar o reconhecimento de fala
+transcrever_audio(arquivo_audio)

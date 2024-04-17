@@ -1,0 +1,7 @@
+Chatbot - Perguntas:
+
+- O site foi desenvolvido por quem?
+- Quais ferramentas as alunas usaram?
+- Qual foi a coisa mais estranha que aconteceu durante o trabalho?
+
+Comando Terminal: python app.py

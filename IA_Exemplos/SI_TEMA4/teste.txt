@@ -1,0 +1,59 @@
+# Dados de teste
+test_data = {
+    'email': ['email26', 'email27', 'email28', 'email29', 'email30'],
+    'texto': [
+        'Aproveite esta oferta especial! Ganhe dinheiro rápido!',
+        'Confirmação de compra: seu pedido foi processado com sucesso.',
+        'Novidades da loja: confira nossos produtos em promoção!',
+        'Recado importante: verifique sua segurança online agora.',
+        'Atenção! Oferta limitada. Não perca sua última chance de compra.'
+    ]
+}
+
+# Dados de teste
+test_data = {
+    'email': ['email26', 'email27', 'email28', 'email29', 'email30'],
+    'texto': [
+        'Promoção exclusiva para clientes VIP! Não perca!',
+        'Sua conta foi ativada com sucesso. Bem-vindo!',
+        'Desconto especial: aproveite nossas ofertas imperdíveis!',
+        'Alerta de segurança: detectamos atividade suspeita.',
+        'Última oportunidade! Ofertas incríveis esperam por você.'
+    ]
+}
+
+# Dados de teste
+test_data = {
+    'email': ['email26', 'email27', 'email28', 'email29', 'email30'],
+    'texto': [
+        'Desconto especial para clientes cadastrados. Aproveite!',
+        'Confirmação de inscrição: você agora faz parte da nossa lista de emails.',
+        'Você acaba de ganhar um cupom de desconto! Aproveite já!',
+        'Alerta: detectamos atividade suspeita em sua conta.',
+        'Aviso de entrega: seu pedido será entregue em breve!'
+    ]
+}
+
+# Dados de teste
+test_data = {
+    'email': ['email26', 'email27', 'email28', 'email29', 'email30'],
+    'texto': [
+        'Parabéns! Você foi selecionado para uma pesquisa de satisfação. Responda agora e ganhe prêmios!',
+        'Atenção: sua conta está em risco devido a atividades suspeitas. Proteja-se agora!',
+        'Oferta especial de aniversário: ganhe 50% de desconto em todos os produtos!',
+        'Alerta de segurança: detectamos tentativas de acesso não autorizado à sua conta.',
+        'Prezado cliente, confirme seus dados cadastrais para evitar o bloqueio da sua conta.'
+    ]
+}
+
+# Dados de teste
+test_data = {
+    'email': ['email26', 'email27', 'email28', 'email29', 'email30'],
+    'texto': [
+        'Olá! Recebemos sua inscrição para o sorteio de prêmios. Boa sorte!',
+        'Alerta de segurança: detectamos atividade suspeita em sua conta. Verifique agora mesmo!',
+        'Oferta relâmpago: apenas hoje! Descontos imperdíveis em nossa loja online.',
+        'Lembrete de pagamento: sua fatura vence em 2 dias. Não se esqueça de realizar o pagamento.',
+        'Promoção exclusiva para assinantes: ganhe brindes especiais ao fazer sua compra!'
+    ]
+}

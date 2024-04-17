@@ -1,0 +1,18 @@
+# Instala a biblioteca do Google Translate
+!pip install googletrans==4.0.0-rc1
+
+# Importa a classe Translator da biblioteca googletrans
+from googletrans import Translator
+
+# Cria um objeto Translator
+translator = Translator()
+
+# Define o texto que queremos traduzir
+texto_original = "Olá, como você está?"
+
+# Traduz o texto para o inglês
+texto_traduzido = translator.translate(texto_original, dest='en')
+
+# Imprime o texto traduzido
+print("Texto Original:", texto_original)
+print("Texto Traduzido para Inglês:", texto_traduzido.text)

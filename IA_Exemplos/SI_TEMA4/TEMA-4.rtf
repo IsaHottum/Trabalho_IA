@@ -1,0 +1,400 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset1 Segoe UI Symbol;}{\f2\fnil\fcharset0 Calibri-Bold;}{\f3\fnil Cambria Math;}{\f4\fnil\fcharset128 FreeSerif;}{\f5\fnil\fcharset0 Cambria Math;}{\f6\fnil\fcharset128 ArialMT;}}
+{\colortbl ;\red89\green52\blue148;\red255\green154\blue0;\red0\green0\blue0;\red0\green255\blue255;\red255\green255\blue255;\red255\green255\blue0;\red192\green192\blue192;\red128\green128\blue128;\red0\green77\blue187;}
+{\*\generator Riched20 10.0.19041}{\*\mmathPr\mmathFont3\mwrapIndent1440 }\viewkind4\uc1 
+\pard\sl240\slmult1\qj\b\f0\fs32\lang22 TEMA 04\par
+Machine Learning (Aprendizado de M\'e1quina)\par
+\cf1\fs28 Habilidades\par
+\cf2\b0\f1\fs22\u9679?\f0  \cf3 Experi\'eancia em t\'e9cnicas de machine learning (aprendizado de m\'e1quina).\par
+\cf2\f1\u9679?\f0  \cf3 Habilidade em construir algoritmos inteligentes.\par
+\fs18\par
+\fs22 Nem sempre \'e9 poss\'edvel implementar um SE (Sistema Especialista) para simular o comportamento humano, gerando um agente inteligente. \highlight4 Imagine um carro aut\'f4nomo que deve navegar em uma cidade cheia de outros carros, pessoas e obst\'e1culos\highlight0 . \ul N\'e3o \'e9 poss\'edvel prever todas as prov\'e1veis localiza\'e7\'f5es de todos os objetos no ambiente\ulnone . Na realidade, \ul o carro aut\'f4nomo deve aprender a se movimentar considerando qualquer configura\'e7\'e3o de objetos\ulnone . Para isso, \'e9 necess\'e1rio \ldblquote ensinar\rdblquote  o sistema do carro aut\'f4nomo a se movimentar dando exemplos de como se comportar quando algum objeto atravessa a rua, de como virar o carro, frear, etc. \ul A montadora Tesla, por exemplo, em 2019, apresentou detalhes t\'e9cnicos da tecnologia de seus carros aut\'f4nomos com caracter\'edsticas semelhantes.\ulnone\par
+\cf5\b\par
+\cf0\b0 Aprendizado de m\'e1quina (AM). No exemplo do carro aut\'f4nomo, um humano pode dirigir um carro numa cidade, \ul tomando as decis\'f5es de frear, acelerar, virar, etc.\ulnone  e armazenar as configura\'e7\'f5es do ambiente a cada decis\'e3o. Essas informa\'e7\'f5es ser\'e3o exemplos para que o sistema aut\'f4nomo aprenda a navegar em uma cidade dadas as \highlight4\b configura\'e7\'f5es do ambiente, capturadas por sensores\highlight0\b0 .\par
+A respeito do Aprendizado de M\'e1quina, tem-se a defini\'e7\'e3o a seguir:\par
+\ldblquote Diz-se que um programa de computador aprende pela experi\'eancia E, com respeito a algum tipo de tarefa T e performance P, se sua performance P na tarefa T melhora com a experi\'eancia E\rdblquote . (MITCHELL, 1997)\par
+Mitchell (1997) definiu o aprendizado de m\'e1quina \ul\b em fun\'e7\'e3o de uma tarefa T que \'e9 ensinada a um programa de computador (modelo de aprendizado) por meio de exemplos, ou experi\'eancias E. Se a performance P aumenta \'e0 medida que mais exemplos E s\'e3o apresentados, o programa est\'e1 aprendendo a tratar a tarefa T\ulnone\b0 .\par
+\par
+Para ficar mais claro, considere as inst\'e2ncias de \b E, T e P \b0 para diversos problemas, na tabela.\par
+\par
+\b Tarefa T \b0 Previs\'e3o meteorol\'f3gica\par
+\b Experi\'eancia E \b0 Valores de diversos sensores meteorol\'f3gicos e estado meteorol\'f3gico (por exemplo, chuva, sol, neblina, etc.)\par
+\b Performance P \b0 Quantidade de previs\'f5es corretamente identificadas\par
+\par
+\b Tarefa T \b0 Speech Recognition (reconhecimento de fala)\par
+\b Experi\'eancia E \b0 Sons gravados e respectivos textos transcritos\par
+\b Performance P \b0 Quantidade de transcri\'e7\'f5es corretas\par
+\par
+\ul\b Diversos algoritmos, ao longo do tempo, t\'eam sido propostos para esse fim\ulnone\b0 . Desde algoritmos puramente matem\'e1ticos at\'e9 probabil\'edsticos e simb\'f3licos. Inclusive a aprendizagem de m\'e1quina pode-se dar por meio de exemplos com a solu\'e7\'e3o indicada ou por exemplos cuja solu\'e7\'e3o n\'e3o tenha\par
+sido indicada por humanos.\par
+\b\par
+4.1.Identificando padr\'f5es a partir de Exemplos\par
+\par
+\b0 Em geral, ao discutir o aprendizado de m\'e1quina e seus diversos algoritmos, \ul\b o objetivo principal \'e9 a identifica\'e7\'e3o de padr\'f5es\ulnone\b0 . Na verdade, \highlight6\b poder\'edamos chamar o aprendizado de m\'e1quina de 'aprendizado de padr\'f5es'\highlight0\b0 .\par
+Para ilustrar isso, considere um problema no qual um \ul jogador de t\'eanis deseja saber se deve ou n\'e3o sair para jogar\ulnone , com base em \ul\b algumas vari\'e1veis meteorol\'f3gicas, como apar\'eancia do tempo, temperatura, umidade e vento\ulnone\b0 .\par
+A tabela 'Caracter\'edsticas observadas para a decis\'e3o de sair ou n\'e3o para jogar t\'eanis' apresenta diversos exemplos das caracter\'edsticas observadas e a melhor decis\'e3o: sair ou n\'e3o para jogar. Note que, para as caracter\'edsticas temperatura e umidade, s\'e3o apresentados valores num\'e9ricos (temperatura em graus Celsius e umidade em percentual) e valores nominais (temperatura entre quente, frio ou ameno, e umidade entre normal e alta). Nas pr\'f3ximas se\'e7\'f5es deste tema, ser\'e3o apresentados alguns algoritmos que podem tratar valores nominais ou trabalhar apenas com valores num\'e9ricos:\par
+\b Caracter\'edsticas observadas para a decis\'e3o de sair ou n\'e3o para jogar t\'eanis\par
+\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\cf3\b0\fs16 Apar\'eancia do tempo\cell Temperatura Num\'e9rica\cell Temperatura Nominal\cell Umidade Percentual\cell Umidade Nominal\cell Vento\cell Jogar?\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\highlight4 Nublado\highlight0\cell 
+\pard\intbl\qr 28\cell 
+\pard\intbl Quente\cell 
+\pard\intbl\qr 86\cell 
+\pard\intbl Alta\cell N\'e3o\cell\highlight4 Sim\highlight0\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\highlight4 Nublado\highlight0\cell 
+\pard\intbl\qr 18\cell 
+\pard\intbl Frio\cell 
+\pard\intbl\qr 65\cell 
+\pard\intbl Normal\cell Sim\cell\highlight4 Sim\highlight0\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\highlight4 Nublado\highlight0\cell 
+\pard\intbl\qr 22\cell 
+\pard\intbl Ameno\cell 
+\pard\intbl\qr 90\cell 
+\pard\intbl Alta\cell Sim\cell\highlight4 Sim\highlight0\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\highlight4 Nublado\highlight0\cell 
+\pard\intbl\qr 27\cell 
+\pard\intbl Quente\cell 
+\pard\intbl\qr 75\cell 
+\pard\intbl Normal\cell N\'e3o\cell\highlight4 Sim\highlight0\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Chuvoso\cell 
+\pard\intbl\qr 21\cell 
+\pard\intbl Ameno\cell 
+\pard\intbl\qr 96\cell 
+\pard\intbl Alta\cell N\'e3o\cell Sim\cell\row\trowd\trgaph30\trleft-30\trrh200\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Chuvoso\cell 
+\pard\intbl\qr 20\cell 
+\pard\intbl Frio\cell 
+\pard\intbl\qr 80\cell 
+\pard\intbl Normal\cell N\'e3o\cell Sim\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Chuvoso\cell 
+\pard\intbl\qr 18\cell 
+\pard\intbl Frio\cell 
+\pard\intbl\qr 70\cell 
+\pard\intbl Normal\cell Sim\cell N\'e3o\cell\row\trowd\trgaph30\trleft-30\trrh200\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Chuvoso\cell 
+\pard\intbl\qr 24\cell 
+\pard\intbl Ameno\cell 
+\pard\intbl\qr 80\cell 
+\pard\intbl Normal\cell N\'e3o\cell Sim\cell\row\trowd\trgaph30\trleft-30\trrh201\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Chuvoso\cell 
+\pard\intbl\qr 17\cell 
+\pard\intbl Ameno\cell 
+\pard\intbl\qr 91\cell 
+\pard\intbl Alta\cell Sim\cell N\'e3o\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\highlight6 Ensolarado\highlight0\cell 
+\pard\intbl\qr 29\cell 
+\pard\intbl\highlight6 Quente\highlight0\cell 
+\pard\intbl\qr 85\cell 
+\pard\intbl Alta\cell N\'e3o\cell\highlight6 N\'e3o\highlight0\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl\highlight6 Ensolarado\highlight0\cell 
+\pard\intbl\qr 27\cell 
+\pard\intbl\highlight6 Quente\cell 
+\pard\intbl\qr\highlight0 90\cell 
+\pard\intbl Alta\cell Sim\cell\highlight6 N\'e3o\highlight0\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Ensolarado\cell 
+\pard\intbl\qr 22\cell 
+\pard\intbl Ameno\cell 
+\pard\intbl\qr 95\cell 
+\pard\intbl Alta\cell N\'e3o\cell N\'e3o\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Ensolarado\cell 
+\pard\intbl\qr 21\cell 
+\pard\intbl Frio\cell 
+\pard\intbl\qr 70\cell 
+\pard\intbl Normal\cell N\'e3o\cell Sim\cell\row\trowd\trgaph30\trleft-30\trrh216\trpaddl30\trpaddr30\trpaddfl3\trpaddfr3
+\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx1436\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx3172\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx4826\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx6353\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx7746\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8280\clcfpat7\clcbpat5\clshdng10000\clbrdrl\brdrw15\brdrs\brdrcf5\clbrdrt\brdrw15\brdrs\brdrcf5\clbrdrr\brdrw15\brdrs\brdrcf5\clbrdrb\brdrw15\brdrs\brdrcf5 \cellx8755 
+\pard\intbl Ensolarado\cell 
+\pard\intbl\qr 24\cell 
+\pard\intbl Ameno\cell 
+\pard\intbl\qr 70\cell 
+\pard\intbl Normal\cell Sim\cell Sim\cell\row 
+\pard\sl240\slmult1\qj\cf0\fs22\par
+Um padr\'e3o que pode ser observado ao analisar cuidadosamente a \highlight6\b tabela \'e9 que n\'e3o se deve sair para jogar quando a apar\'eancia do tempo est\'e1 ensolarada e a temperatura \'e9 quente\highlight0\b0 . Outro padr\'e3o \'e9 \highlight4\b que toda vez que a apar\'eancia do tempo estiver nublada, \'e9 poss\'edvel sair para jogar\highlight0\b0 .\par
+Os diversos algoritmos de aprendizado de m\'e1quina que ser\'e3o apresentados utilizam t\'e9cnicas probabil\'edsticas, matem\'e1ticas ou simb\'f3licas, entre outras, para identificar esses padr\'f5es. Eles gerar\'e3o um modelo (conforme a t\'e9cnica utilizada) para ser empregado em dados cuja resposta esperada n\'e3o \'e9 conhecida. \highlight7 Esse modelo, portanto, imitar\'e1 o comportamento dos humanos que determinaram as respostas esperadas dos exemplos usados no treinamento do aprendizado autom\'e1tico, adotando assim um comportamento 'inteligente'\highlight0 .\par
+\par
+Atividade: outros padr\'f5es encontrados:\par
+1 - um padr\'e3o adicional seria evitar jogar quando est\'e1 ensolarado e a umidade \'e9 alta.\par
+2 - considerar a presen\'e7a de vento em dias chuvosos pode ser relevante n\'e3o jogar.\par
+\par
+
+\pard\qj\b 4.2.Principais etapas do aprendizado autom\'e1tico\par
+\b0 No desenvolvimento de uma solu\'e7\'e3o com o uso de aprendizado autom\'e1tico, h\'e1 etapas que, na maioria das vezes, ser\'e3o percorridas. A figura \ldblquote Principais etapas para um aprendizado autom\'e1tico\rdblquote\par
+apresenta essas etapas, iniciando pela \b sele\'e7\'e3o dos dados\b0 , passando pela etapa de \b rotula\'e7\'e3o, balanceamento dos dados, extra\'e7\'e3o de features, sele\'e7\'e3o de features, treinamento do modelo \b0 e \b avalia\'e7\'e3o \b0 do modelo gerado. Geralmente, \b refinamentos \b0 podem ser feitos em alguma das etapas anteriores para alcan\'e7ar melhores resultados na avalia\'e7\'e3o.\par
+\par
+\b Sele\'e7\'e3o dos dados -> Rotula\'e7\'e3o dos Dados -> Balanceamento dos Dados -> Extra\'e7\'e3o de Features -> Sele\'e7\'e3o de Features -> Treinamento do Modelo -> Avalia\'e7\'e3o do Modelo\par
+\b0\par
+\b Refinamentos: \b0 Sele\'e7\'e3o dos dados , Balanceamento dos Dados, Extra\'e7\'e3o de Features, Sele\'e7\'e3o de Features e Treinamento do Modelo.\par
+\par
+
+\pard\sl240\slmult1\qj\cf3 A \highlight6\b sele\'e7\'e3o dos dados\highlight0  \b0\'e9 uma tarefa primordial, \highlight4 pois quanto mais representativos do problema \cf0 forem os dados, maiores as chances de se obter um modelo de aprendizado que reagir\'e1 bem a novos dados do problema\highlight0 . Por exemplo, ao desejar introduzir um agente inteligente proveniente do aprendizado autom\'e1tico em uma tarefa antes realizada manualmente, \'e9 necess\'e1rio obter o m\'e1ximo\par
+poss\'edvel dos dados gerados manualmente. Dessa forma, esses dados possibilitaram um comportamento autom\'e1tico similar ao humano.\par
+\ul\b Considere a tarefa de criar um atendente de help desk com aprendizado de m\'e1quina\ulnone\b0 . Os dados a serem obtidos devem incluir tanto \highlight7\ul aqueles gerados pelo atendente quanto pelo usu\'e1rio do helpdesk\highlight0\ulnone . Se o objetivo \'e9 gerar \b um modelo de previs\'e3o meteorol\'f3gica, dados dos mais variados sensores (temperatura, press\'e3o, velocidade do vento, etc.) devem ser coletados ao longo de um extenso per\'edodo de medi\'e7\'e3o\b0 .\par
+Ap\'f3s a obten\'e7\'e3o dos dados, \'e9 necess\'e1rio proceder \'e0 \highlight6\b rotulagem\highlight0  \b0 dos mesmos. \ul Essa rotulagem consiste basicamente em indicar, para cada exemplo dos dados obtidos, qual a resposta esperada\ulnone . O\par
+termo muito utilizado na \'e1rea para se referir \'e0 resposta esperada \'e9 \highlight7 "classe" (em tarefas de classifica\'e7\'e3o, como ser\'e1 visto a seguir, na taxonomia)\highlight0 . Assim, para cada exemplo, deve-se especificar qual a classe esperada. \highlight7 No caso dos dados meteorol\'f3gicos, por exemplo, \'e9 preciso indicar a condi\'e7\'e3o do tempo (ensolarado, nublado, chuvoso, etc.) para cada conjunto de medi\'e7\'f5es\highlight0 .\par
+Ap\'f3s a rotulagem dos dados, pode ser necess\'e1rio realizar o balanceamento dos mesmos.\par
+Considere o caso em que os dados obtidos foram rotulados majoritariamente com apenas duas das tr\'eas classes do problema. \highlight7 Por exemplo, em um conjunto de 10 mil exemplos relacionados ao problema meteorol\'f3gico, 4,9 mil s\'e3o classificados como ensolarados, 5 mil como nublado e apenas\par
+0,1 mil como chuvoso. Nesse caso, h\'e1 poucos exemplos de dados para predizer condi\'e7\'f5es de tempo\par
+chuvoso. Assim, \'e9 fundamental balancear os dados para evitar que o modelo aprenda e prediga de\par
+forma desproporcional\highlight0  as duas classes mais frequentes, cometendo erros significativos na classe menos frequente.\par
+O \highlight6\b balanceamento\highlight0  \b0 dos dados pode ser realizado por meio de duas t\'e9cnicas principais: \b oversampling e undersampling\b0 . \ul Na primeira t\'e9cnica, busca-se obter mais dados da(s) classe(s) minorit\'e1ria(s), seja procurando mais dados reais, seja gerando dados sint\'e9ticos.\ulnone  \b Na segunda t\'e9cnica, exemplos das classes majorit\'e1rias devem ser descartados para se obter uma propor\'e7\'e3o similar \'e0(s) classe(s) minorit\'e1ria(s)\b0 . \highlight7 O \b undersampling\b0  deve ser empregado somente caso o conjunto de dados possua quantidade suficiente para dispensar dados sem comprometer o desempenho do aprendizado\highlight0 .\par
+Em algoritmos tradicionais de aprendizado de m\'e1quina, a etapa de \highlight6\b extra\'e7\'e3o de atributos (features) \highlight0\b0\'e9 essencial, pois s\'e3o esses atributos extra\'eddos dos dados que possibilitam aos algoritmos de aprendizado gerar modelos para predizer as classes desejadas. \highlight7\ul No exemplo meteorol\'f3gico, cada medida obtida por cada sensor pode ser considerada um atributo do problema\highlight0\ulnone . Outro exemplo \highlight4\'e9 o\par
+problema de \ul\b conceder ou n\'e3o cr\'e9dito a clientes de um banco\ulnone\b0 , onde a tabela 'Exemplo de atributos de entrada para um aprendizado autom\'e1tico' apresenta atributos e seus poss\'edveis valores que podem ser extra\'eddos das fichas cadastrais dos clientes\highlight0 .\par
+\par
+\cf3\highlight7\b Atributo\b0 ,Valor\par
+\highlight0\b G\'eanero\b0 ,Masculino ou feminino\par
+\b Idade\b0 ,N\'famero inteiro\par
+\b N\'edvel educacional\b0 ,Primeiro grau incomp., primeiro grau comp., segundo grau incomp., segundo grau comp., superior incomp., superior comp., p\'f3s-gradua\'e7\'e3o\par
+\b Estado Civil\b0 ,Solteiro, casado, divorciado, vi\'favo\par
+\b Profiss\'e3o\b0 ,Nome da profiss\'e3o\par
+\b Trabalha h\'e1 quanto tempo\b0 ,Quantidade de meses\par
+\b Consta em \'f3rg\'e3os de protesto\b0 ,Sim ou n\'e3o\par
+\b Sal\'e1rio\b0 ,Valor decimal\par
+\b Altura\b0 ,Valor decimal\par
+\par
+\cf0 Nem sempre, no entanto, a extra\'e7\'e3o de atributos \'e9 t\'e3o imediata, como mapear cada medi\'e7\'e3o de um sensor ou campo de cadastro para um atributo. \ul Considere o problema de detectar e-mails spam. Nesse caso, os atributos consistir\'e3o em pistas espalhadas pelo t\'edtulo e corpo do e-mail\ulnone . Por exemplo, a ocorr\'eancia de determinadas palavras que indicam um spam (blacklist) ou palavras que\par
+indicam um e-mail confi\'e1vel (whitelist) podem ser atributos dessa tarefa.\par
+Um outro passo, \ul\'e0s vezes opcional\ulnone , \'e9 a \highlight6\b\f2 sele\'e7\'e3o de atributos\highlight0\b0\f0 . Nem sempre um atributo que escolhemos para resolver um problema \'e9 realmente importante para a solu\'e7\'e3o. \ul Isso quando tal atributo n\'e3o atrapalha a identifica\'e7\'e3o da solu\'e7\'e3o pelo algoritmo de aprendizado\ulnone . Alguns algoritmos,\par
+\ul\b como a \'e1rvore de decis\'e3o, que veremos mais adiante, tem a robustez de selecionar os atributos que melhor se adequam \'e0 solu\'e7\'e3o do problema\ulnone\b0 . J\'e1 outros algoritmos podem n\'e3o ser robustos assim. A sele\'e7\'e3o de atributos \'e9 feita com base em alguma m\'e9trica, como correla\'e7\'e3o, ganho de informa\'e7\'e3o ou entropia.\par
+Finalmente, chega \'e0 etapa de \highlight6\b\f2 treinamento do modelo\highlight0\b0\f0 . Nessa etapa, de acordo com os atributos e seus tipos, quantidade de dados, tipo de classes (discretas ou cont\'ednuas), dentre outras caracter\'edsticas, \ul\b deve-se escolher o melhor algoritmo de aprendizado autom\'e1tico\ulnone\b0 . Na pr\'f3xima se\'e7\'e3o\par
+ser\'e1 apresentada uma taxonomia das principais t\'e9cnicas de aprendizado.\par
+O \highlight6\b treinamento do modelo\highlight0  \b0 consiste na aplica\'e7\'e3o do algoritmo de treinamento nos dados que foram tratados nas etapas anteriores. \ul Esses algoritmos, basicamente, encontrar\'e3o, para cada classe, o padr\'e3o que a indica\ulnone . Posteriormente, com dados n\'e3o vistos durante a etapa de treinamento, o modelo gerado poder\'e1 ser aplicado e as classes \ldblquote identificadas\rdblquote .\par
+Nem sempre treinar um modelo \'e9 o fim da solu\'e7\'e3o. Uma etapa de \highlight6\b\f2 avalia\'e7\'e3o\highlight0  \b0\f0 se mostra essencial para definir uma performance para a solu\'e7\'e3o. \ul A avalia\'e7\'e3o \'e9 feita utilizando-se algumas m\'e9tricas, como precis\'e3o, cobertura, medida-F, acur\'e1cia, entre outros\ulnone . Outro recurso muito \'fatil em alguns casos \'e9 a \b matriz de confus\'e3o\b0 . \'c9 importante salientar que muitos algoritmos de aprendizado apresentam, ao final do treinamento, muitas dessas m\'e9tricas, mas nem sempre baseados em dados\par
+espec\'edficos para testar a solu\'e7\'e3o.\par
+\ul Antes do treinamento, os dados devem ser separados em conjunto de treinamento (para efetivamente treinar o modelo) e teste. O conjunto de teste, que n\'e3o foi utilizado durante o treinamento, deve ser utilizado na etapa de avalia\'e7\'e3o para a gera\'e7\'e3o das m\'e9tricas\ulnone .\par
+A avalia\'e7\'e3o assim como o uso efetivo do modelo de aprendizado no problema ao qual foi proposto devem ser analisados para identificar poss\'edveis melhorias no processo. \b Por exemplo, ao se identificar que uma classe do problema est\'e1 sendo confundida com outra, deve-se retornar \'e0 etapa de extra\'e7\'e3o de features e escolher atributos que permitam distinguir melhor as classes confundidas\b0 .\par
+Tendo uma vis\'e3o geral do processo de aprendizado autom\'e1tico, na pr\'f3xima se\'e7\'e3o ser\'e1 apresentada uma taxonomia, ou organiza\'e7\'e3o, dos principais paradigmas e t\'e9cnicas de aprendizado autom\'e1tico.\par
+\par
+\b\f2 4.3. Modelos do Aprendizado Autom\'e1tico\par
+\par
+
+\pard\sl240\slmult1\qc\f0 MODELOS DO APRENDIZADO AUTOM\'c1TICO\par
+
+\pard\sl240\slmult1\qj\b0 TAREFAS: Supervisionado (PARADIGMAS: classifica\'e7\'e3o e regress\'e3o);\par
+TAREFAS: Semisupervisionado (PARADIGMAS: propaga\'e7\'e3o de r\'f3tulos);\par
+TAREFAS: N\'e3o supervisionado (PARADIGMAS: agrupamentos e Detec\'e7\'e3o de Outliers);\par
+\b\f2\par
+\b0\f0 Os tr\'eas principais paradigmas de aprendizado s\'e3o: \b\f2 supervisionado\b0\f0 , \b\f2 semi supervisionado \b0\f0 e \b\f2 n\'e3o supervisionado\b0\f0 . A grande diferen\'e7a est\'e1 nos dados utilizados durante o treinamento do modelo que encapsula a \ldblquote intelig\'eancia\rdblquote .\par
+\ul No supervisionado, os dados s\'e3o rotulados\ulnone , ou seja, t\'eam a indica\'e7\'e3o da resposta esperada, dada as caracter\'edsticas de cada exemplo. \ul No n\'e3o supervisionado, os dados n\'e3o t\'eam essa rotula\'e7\'e3o\ulnone . E no \ul semi-supervisionado, parte dos dados s\'e3o rotulados e parte n\'e3o s\'e3o rotulados\ulnone .\par
+\highlight7 No paradigma supervisionado tem-se dois grandes grupos de tarefas: \b\f2 classifica\'e7\'e3o \b0\f0 e \b\f2 regress\'e3o\b0\f0 . \highlight0 Na primeira tarefa objetiva-se, dadas as caracter\'edsticas de uma inst\'e2ncia, definir uma classe (ou resposta esperada) \highlight6 dentre um n\'famero finito de possibilidades\highlight0  (conjunto discreto de valores). Na regress\'e3o, no entanto, \highlight6 esse conjunto de classes \'e9 infinito\highlight0 , como, por exemplo, um n\'famero real entre -1,0 e 1,0.\par
+\highlight7 No paradigma n\'e3o supervisionado, h\'e1 tamb\'e9m diversas tarefas dentre as quais podemos citar a principal, que \'e9 o \b\f2 agrupamento \b0\f0 e tamb\'e9m a \b\f2 detec\'e7\'e3o de outliers\highlight0\b0\f0 . No agrupamento, o objetivo \ul\'e9 identificar grupos nos exemplos\ulnone  (dados) segundo alguma m\'e9trica de similaridade dadas as caracter\'edsticas extra\'eddas dos exemplos.\par
+\highlight7 No paradigma semi supervisionado, quaisquer das tarefas mencionadas podem ser abordadas, \highlight0 iniciando tanto pela supervis\'e3o quanto pela n\'e3o supervis\'e3o. A \ul semi supervis\'e3o \'e9 indicada para os casos em que se tem uma parte dos dados rotulados e uma grande quantidade de dados n\'e3o rotulados\ulnone .\par
+Para ficar mais claros esses paradigmas e suas principais tarefas, considere a seguir alguns exemplos de algoritmos de aprendizado de m\'e1quina, seus fundamentos e aplicabilidades.\par
+\par
+\b\f2 4.3.1. Aprendizagem supervisionada\par
+\b0\f0 No aprendizado supervisionado, os dados servem como um instrutor do algoritmo de treinamento, indicando para cada exemplo a resposta esperada. Nos dados apresentados na tabela \ldblquote Caracter\'edsticas observadas para a decis\'e3o de sair ou n\'e3o para jogar t\'eanis\rdblquote , a \'faltima coluna (Jogar?) \'e9 a resposta esperada, que foi definida por humanos, ao observar as caracter\'edsticas listadas nas outras colunas.\par
+A seguir, ser\'e3o apresentadas no\'e7\'f5es dos principais algoritmos de aprendizado supervisionado para a tarefa de classifica\'e7\'e3o: \'c1rvores de Decis\'e3o, Naive Bayes e SVM. Para a tarefa de regress\'e3o linear ser\'e1 apresentado um algoritmo de regress\'e3o linear.\par
+\par
+\b\f2\'c1rvores de decis\'e3o, um paradigma simb\'f3lico\par
+\b0\f0 Uma \'e1rvore de decis\'e3o, a exemplo dos outros algoritmos de aprendizado em uma tarefa de classifica\'e7\'e3o, \b\'e9 uma fun\'e7\'e3o que toma como entrada um conjunto de valores e retorna uma decis\'e3o\b0 . A \'e1rvore de decis\'e3o toma uma s\'e9rie de passos baseados nos valores de entrada at\'e9 chegar a uma decis\'e3o. No Tema 2 foi definida a estrutura de dados em formato de \'e1rvore, como na figura, em que se tem basicamente dois tipos de n\'f3s: internos (incluindo o n\'f3 raiz) e raiz. Instanciando uma estrutura de \'e1rvore para tornar em uma \'e1rvore de decis\'e3o deve-se, a cada n\'f3 interno, definir uma decis\'e3o a ser tomada em rela\'e7\'e3o aos valores de entrada (atributos ou features). Na figura tem-se a\par
+ilustra\'e7\'e3o de uma \'e1rvore de decis\'e3o que toma decis\'f5es (D1 a D3) sobre os valores de tr\'eas atributos\par
+(A1 a A3).\par
+\par
+\tab\tab\tab\tab\tab\tab\b Raiz\par
+\b0\tab\tab\tab\tab\highlight7 N\'f3 interno\highlight0\tab\tab\highlight8 N\'f3 interno\highlight0\par
+\tab\tab\highlight7 N\'f3 folha\tab N\'f3 folha\highlight0\tab\tab\highlight8 N\'f3 folha\tab N\'f3 folha\par
+\par
+
+\pard\qj\highlight0 Por exemplo, para se tomar a decis\'e3o 2 (D2), o atributo A1 deve ter valor menor ou igual a \f3\u-10187?\u-8452?\f0\lang1046  \lang22 e A2 deve ser maior que \f3\u-10187?\u-8451?\f0 . J\'e1 a decis\'e3o 1 (D1) pode ser escolhida para qualquer valor de A1, mas A2 deve ser menor ou igual a \f3\u-10187?\u-8451?\f4  \f0 ou A3 deve ser menor ou igual a \f3\u-10187?\u-8450?\f0 .\par
+
+\pard\sl240\slmult1\qj\tab\tab\tab\par
+\tab\tab\tab\tab\tab\tab\b A1\par
+\b0\tab\tab\tab\tab\tab\highlight7 A2\highlight0  (<=\f3\lang1046\u-10187?\u-8452?\f5 )\f0\lang22\tab\highlight8 A3\highlight0  (>\f3\lang1046\u-10187?\u-8452?\f5 )\f0\lang22\par
+\tab\tab\tab (<=\f3\lang1046\u-10187?\u-8451?\f5 ) \highlight7\f0\lang22 D1\tab D2\highlight0  (>\f3\lang1046\u-10187?\u-8451?\f5 )\f0\lang22\tab     (<=y\f5\lang1046 ) \highlight8\f0\lang22 D1\tab D2 \highlight0 (>\f3\lang1046\u-10187?\u-8451?\f5 y)\par
+\par
+
+\pard\qj\f0 Vale notar que uma \'e1rvore de decis\'e3o atua tanto sobre valores de atributos num\'e9ricos, como no exemplo anterior, como sobre valores nominais. Na figura, nos n\'f3s internos, as decis\'f5es foram alteradas para o caso de atributos nominais. Por exemplo, para a decis\'e3o 1 (D1), A1 deve ser igual a\par
+
+\pard\sl240\slmult1\qj\ldblquote alta\rdblquote  e A2 deve ser \ldblquote p\rdblquote .\par
+\par
+\lang22\tab\tab\tab\tab\tab\tab\b A1\par
+\b0\tab\tab\tab\tab\tab\highlight7 A2\highlight0  (=alta\f5\lang1046 )\f0\lang22\tab\highlight8 A3\highlight0  (=baixo\f5\lang1046 )\f0\lang22\par
+\tab\tab\tab (=p\f5\lang1046 ) \highlight7\f0\lang22 D1\tab    \tab D2\highlight0  (=m)\f5\lang1046      \f0\lang22  (=g\f5\lang1046 ) \highlight8\f0\lang22 D1\tab D2 \highlight0 (=p\f5\lang1046 )\par
+\par
+
+\pard\qj\f0 O processo de cria\'e7\'e3o de uma \'e1rvore de decis\'e3o \'e9 tamb\'e9m \b chamado de indu\'e7\'e3o\b0 . Os algoritmos de indu\'e7\'e3o objetivam a cria\'e7\'e3o de \'e1rvores que tenham a menor profundidade poss\'edvel sem perder seu poder e acur\'e1cia de classifica\'e7\'e3o. \b Isso garante, quando o conjunto de atributos \'e9 muito grande, que a decis\'e3o seja tomada com maior efici\'eancia\b0 .\par
+Assim como encontrar a menor \'e1rvore de decis\'e3o para um problema, uma heur\'edstica simples pode encontrar uma solu\'e7\'e3o aproximada: \ul\b estrat\'e9gia gulosa\ulnone\b0 . Nessa estrat\'e9gia, \ul utilizam-se os atributos mais importantes primeiro para dividir o problema em problemas menores\ulnone , at\'e9 que todos os exemplos de treinamento da \'e1rvore sejam corretamente classificados pela \'e1rvore gerada.\par
+Considerando os atributos da tabela (apar\'eancia do tempo, temperatura, umidade e vento) para decidir se devo ou n\'e3o sair para jogar t\'eanis (decis\'e3o SIM ou N\'c3O), podemos gerar a \'e1rvore de decis\'e3o ilustrada na figura \ldblquote\'c1rvore de decis\'e3o gerada sobre os dados da\rdblquote . H\'e1 outras poss\'edveis \'e1rvores de decis\'e3o? Mais ou menos eficientes?\par
+\par
+\b\f2 Support Vector Machines (SVM), um paradigma matem\'e1tico\par
+\par
+\b0\f0 O SVM (Support Vector Machines) \'e9 um paradigma matem\'e1tico para a cria\'e7\'e3o de classificadores. \'c9 uma das t\'e9cnicas \b mais utilizadas em aprendizado supervisionado\b0 , por basicamente 3 raz\'f5es (uma \b ideia b\'e1sica, um truque h\'e1bil e n\'e3o \'e9 param\'e9trico\b0 ):\par
+\f1\u9679?\f6  \f0 Generaliza bem para dados n\'e3o vistos, pois define um separador de margem m\'e1xima em espa\'e7o multidimensional (cada atributo do problema define uma dimens\'e3o do espa\'e7o).\par
+\f1\u9679?\f6  \f0 Embora crie uma separa\'e7\'e3o linear no espa\'e7o multidimensional, pode utilizar kernels (truque h\'e1bil) que transformam o problema num espa\'e7o de dimens\'e3o superior. Assim, os problemas que n\'e3o t\'eam separa\'e7\'e3o linear nos dados de entrada (atributos) podem ter separa\'e7\'e3o linear num espa\'e7o de maior dimens\'e3o (gerado pelo kernel utilizado).\f5\par
+\f1\lang22\u9679?\f6  \f0 N\'e3o \'e9 param\'e9trico e armazena os dados de treinamento que s\'e3o os mais indicativos para o separador de margem m\'e1xima (s\'e3o os support vector machines).\par
+\par
+Uma das limita\'e7\'f5es do SVM \'e9 que ele \b n\'e3o\b0  \b trata diretamente de valores nominais\b0 , pois tem de gerar um espa\'e7o multidimensional, com cada atributo em um dos eixos desse espa\'e7o. \b Como representar valores nominais em um espa\'e7o num\'e9rico?\b0  Assim, problemas com valores nominais devem ter esses valores convertidos devidamente para valores num\'e9ricos. H\'e1 diversas t\'e9cnicas de convers\'e3o, sendo a \b\f2 one-hot-encoding \b0\f0 uma das mais utilizadas.\par
+Considere o \ul atributo tempo, que pode assumir tr\'eas poss\'edveis valores: chuvoso, nublado e ensolarado\ulnone . Utilizando o one-hot-encoding, geramos tantos atributos quantos forem os poss\'edveis valores do atributo. Nesse caso, tr\'eas. Cada um dos atributos gerados ser\'e1 bin\'e1rio, ou seja, assumir\'e1\par
+apenas os valores 1 ou 0. Veja o exemplo em que, para representar um valor do atributo tempo utilizam-se tr\'eas atributos num\'e9ricos (bin\'e1rios).\par
+\par
+CHUVOSO\tab\tab NUBLADO\tab\tab ENSOLARADO\par
+1\tab\tab\tab 0\tab\tab\tab 0\tab\tab\tab REPRESETA "CHUVOSO"\par
+0\tab\tab\tab 1\tab\tab\tab 0\tab\tab\tab REPRESNTA "NUBLADO"\par
+0\tab\tab\tab 0\tab\tab\tab 1\tab\tab\tab REPRESNTA "ENSOLARADO"\par
+\par
+O SVM \'e9 essencialmente \highlight7 uma t\'e9cnica de classifica\'e7\'e3o bin\'e1ria\highlight0 , pois ele busca obter um hiperplano de separa\'e7\'e3o entre duas classes. Mas o que fazer quando meu problema tem mais de duas classes? Nesses casos, treinam-se diversos classificadores bin\'e1rios e utiliza-se alguma m\'e9trica para escolher uma das classes.\par
+Imagine um problema \b com tr\'eas classes\b0 , representadas por cores: \b azul, verde e vermelho\b0 . Para decidir entre essas classes tem-se, por exemplo, duas formas de combinar classificadores bin\'e1rios\par
+SVM, a saber: \b\f2 Um contra Todos \b0\f0 ou \b\f2 Um Contra Um\b0\f0 . A figura \ldblquote Formas de combinar classificadores bin\'e1rios em problemas multiclasse\rdblquote  ilustra essas duas formas de combina\'e7\'e3o.\par
+Vale salientar que a maioria das implementa\'e7\'f5es SVM, em diversos pacotes de algoritmos de aprendizado de m\'e1quina, \b tratam automaticamente os problemas multiclasse\b0 .\par
+\par
+Um contra todos\tab\tab\tab\tab Um conta um\par
+B | G R\tab\tab\tab\tab\tab\tab B | G\par
+G | B R\tab\tab\tab\tab\tab\tab B | R\par
+R | B G\tab\tab\tab\tab\tab\tab G | R\par
+\par
+\b\f2 Regress\'e3o linear, problema de classes cont\'ednuas\par
+\par
+\cf3\b0\f0 Tanto as \b\'e1rvores de decis\'e3o \b0 quanto \b o SVM\b0  tratam de problemas cujas \ul classes s\'e3o discretas\ulnone , \cf0 ou seja, quando j\'e1 se sabe a \ul priori a quantidade de classes a serem tratadas\ulnone . \highlight7 Mas e quando o problema n\'e3o tem um n\'famero predefinido de classes? Isto \'e9, a classe \'e9 definida como um valor cont\'ednuo?\par
+\highlight0 Por exemplo, em \ul grandes portais de vendas pela internet, em que se tem milh\'f5es de produtos \'e0 venda, como tratar o pre\'e7o desses produtos de forma din\'e2mica?\ulnone  Seria interessante monitorar a concorr\'eancia e definir automaticamente o pre\'e7o dos produtos com o intuito de se obter o maior volume de vendas.\par
+\highlight7 Nesse problema, a classe \'e9 cont\'ednua\highlight0 , pois o pre\'e7o pode variar continuamente em um intervalo de valores. Imagine o produto X, ele pode custar de $0,01 at\'e9 $100,00.\par
+Uma t\'e9cnica muito utilizada nesses tipos de problema \'e9 a \b\f2 Regress\'e3o Linear\b0\f0 , que \'e9 uma t\'e9cnica matem\'e1tica que visa minimizar o erro de uma equa\'e7\'e3o cuja representa\'e7\'e3o geom\'e9trica se adapta a um conjunto de pontos. Esse conjunto de pontos s\'e3o os exemplos do problema a ser solucionado.\par
+Em outras palavras, \ul a regress\'e3o linear \'e9 a defini\'e7\'e3o de uma equa\'e7\'e3o que gera uma linha que melhor se adequa ao relacionamento entre os atributos de entrada X (dados de treinamento) e as classes Y (cont\'ednuas) do problema. Isso \'e9 feito obtendo se coeficientes para os atributos de entrada X\ulnone .\par
+Por exemplo, \highlight7 o pre\'e7o de um produto Y (classe) \'e9 dado de acordo com seus atributos de entrada X (como nome, marca, modelo, etc., que, por serem valores nominais, devem ser convertidos em valores num\'e9ricos)\highlight0 .\par
+Considere a equa\'e7\'e3o simplificada a seguir. A classe \f3\u-10187?\u-9140?\u-10187?\u-9130?\f4  \f0\'e9 definida como \ul o resultado do somat\'f3rio da constante \f3\u-10187?\u-8452?\ulnone\f4  \f0 (que indica a intercepta\'e7\'e3o da linha com o eixo vertical, numa representa\'e7\'e3o geom\'e9trica) \ul com os atributos \f3\u-10187?\u-9141?\u-10187?\u-9130?\f4  \f0 multiplicados pelo coeficiente \f3\u-10187?\u-8451?\ulnone\f0 .\par
+\par
+
+\pard\qc\b\f3\fs32\lang1046\u-10187?\u-9140?\u-10187?\u-9130?\f5  = \f3\u-10187?\u-8452?\f5  + \f3\u-10187?\u-8451?\f5 X\f3\u-10187?\u-9130?\par
+\par
+
+\pard\qj\b0\f0\fs22 Desta forma, consegue-se um valor cont\'ednuo Y, de acordo com os valores de X. Essa equa\'e7\'e3o define \b uma reta\b0 , como ilustrada na figura do algor\'edtmo \ldblquote\ul Exemplo de regress\'e3o linear, ilustrada geometricamente\ulnone\rdblquote , em que os pontos vermelhos s\'e3o as inst\'e2ncias de treinamento da regress\'e3o. A reta azul (regress\'e3o) \'e9 utilizada para, dado um valor de X, definir o valor Y (classe).\par
+\par
+
+\pard\sl240\slmult1\qj\ul Exemplo de regress\'e3o linear, ilustrada geometricamente\ulnone\par
+
+\pard\qj\cf9 import numpy as np\par
+import matplotlib.pyplot as plt\par
+\par
+# Gerando dados de exemplo\par
+np.random.seed(0)\par
+x = np.linspace(0, 10, 50)\par
+y = 2 * x + 1 + np.random.normal(0, 2, 50)  # Adicionando um ru\'eddo gaussiano aos dados\par
+\par
+# Calculando a linha de regress\'e3o linear\par
+coeficientes = np.polyfit(x, y, 1)\par
+m, b = coeficientes\par
+\par
+# Plotando os dados e a linha de regress\'e3o\par
+plt.figure(figsize=(8, 6))\par
+plt.scatter(x, y, label='Dados de exemplo')\par
+plt.plot(x, m*x + b, color='red', label='Linha de regress\'e3o linear')\par
+\par
+# Adicionando legendas e t\'edtulo\par
+plt.xlabel('X')\par
+plt.ylabel('Y')\par
+plt.title('Exemplo de Regress\'e3o Linear')\par
+plt.legend()\par
+\par
+# Exibindo o gr\'e1fico\par
+plt.grid(True)\par
+plt.show()\par
+\par
+\cf0\b\f2 4.3.2.Aprendizagem n\'e3o supervisionada\par
+\b0\f0 At\'e9 agora, tratou-se de aprender a resolu\'e7\'e3o de problemas quando se sabe quais s\'e3o as poss\'edveis respostas esperadas. Por exemplo, decidir \b se saio ou n\'e3o para praticar esportes\b0 , \ul qual ser\'e1 o pre\'e7o do produto\ulnone , etc. N\'e3o podemos nos esquecer, no entanto, de uma classe de problemas em que n\'e3o se sabe quais classes esperar, ou seja, n\'e3o temos exemplos de solu\'e7\'e3o do problema.\par
+Imagine \ul um conjunto enorme de listas de compras realizadas em um supermercado\ulnone . Ser\'e1 que podemos aprender alguma coisa com essa informa\'e7\'e3o? \highlight7 Ser\'e1 que posso otimizar alguma coisa no supermercado, baseado no comportamento dos compradores, obtido de suas compras?\par
+Imagine ent\'e3o a quantidade de logs gerados em um sistema banc\'e1rio? E as informa\'e7\'f5es coletadas por sensores meteorol\'f3gicos em um pa\'eds?\par
+\highlight0 Esse tipo de aprendizado \'e9 dito n\'e3o supervisionado, pois n\'e3o se tem a defini\'e7\'e3o ou anota\'e7\'e3o das classes do problema, mas ainda assim deseja-se aprender algo. No aprendizado n\'e3o supervisionado, podemos citar duas grandes tarefas: \b\f2 associa\'e7\'e3o \b0\f0 e \b\f2 agrupamento\b0\f0 , dentre outras.\par
+\par
+\b\f2 K-means, um m\'e9todo de agrupamento\par
+\par
+\b0\f0 O \b\f2 K-means \b0\f0\'e9 um dos m\'e9todos mais conhecidos do \ul aprendizado n\'e3o supervisionado\ulnone . Esse \'e9 um m\'e9todo de agrupamento que, aplicando alguma t\'e9cnica de similaridade vetorial, \highlight7 busca identificar K grupos nas inst\'e2ncias de treinamento\highlight0 .\par
+A figura abaixo ilustra a aplica\'e7\'e3o de um algoritmo de agrupamento K-means, com K = 3 (grupos azul, verde e vermelho, \'e0 direita). Para a defini\'e7\'e3o de um grupo, o algoritmo escolhe um ponto que \'e9 chamado \b\f2 centr\'f3ide\b0\f0 . Definidos os centr\'f3ides de cada grupo, um novo ponto (inst\'e2ncia composta por atributos) \'e9 alocado no grupo a que estiver mais pr\'f3ximo, de acordo com a medida de similaridade escolhida.\par
+Dentre as medidas de similaridade, podemos citar a dist\'e2ncia \b\f2 Euclidiana\b0\f0 , dist\'e2ncia de \b\f2 Manhattan\b0\f0 , e dist\'e2ncia de \b\f2 Mahalanobis\b0\f0 .\cf9\par
+\cf3\lang22\par
+
+\pard\sl240\slmult1\qj\par
+
+\pard\qj\cf0 Veja que aqui deve-se, a priori, definir a quantidade de grupos (K). H\'e1 outras t\'e9cnicas que n\'e3o necessitam que se defina a quantidade a priori, como os \b\f2 m\'e9todos aglomerativos \b0\f0 ou \b\f2 hier\'e1rquicos\b0\f0 .\par
+\par
+\cf9 import numpy as np\par
+\par
+# Pontos de exemplo\par
+pontos = np.array([[1, 2], [2, 1], [3, 2], [7, 5], [6, 6], [8, 7], [7, 7]])\par
+\par
+from sklearn.cluster import KMeans\par
+\par
+# Aplicar o algoritmo K-means\par
+kmeans = KMeans(n_clusters=3)\par
+kmeans.fit(pontos)\par
+centroides = kmeans.cluster_centers_\par
+labels = kmeans.labels_\par
+\par
+import matplotlib.pyplot as plt\par
+\par
+# Plotar os pontos de dados\par
+plt.scatter(pontos[:, 0], pontos[:, 1], c=labels, cmap='viridis', alpha=0.5)\par
+\par
+# Plotar os centroides\par
+plt.scatter(centroides[:, 0], centroides[:, 1], marker='o', s=300, color='red', edgecolor='black')\par
+\par
+# Adicionar legendas e t\'edtulo\par
+plt.xlabel('X')\par
+plt.ylabel('Y')\par
+plt.title('Exemplo de K-means com 3 clusters')\par
+\par
+plt.grid(True)\par
+plt.show()\par
+\cf0\par
+\b\f2 4.3.3.Aprendizagem semi supervisionada\par
+\b0\f0 Entre o aprendizado supervisionado e o aprendizado n\'e3o supervisionado h\'e1 uma abordagem chamada \highlight7 de semi supervisionada\highlight0 . Nessa abordagem h\'e1 diversos m\'e9todos que tomam vantagem de dados anotados, mas n\'e3o deixam de aproveitar tamb\'e9m os dados que n\'e3o est\'e3o anotados e, geralmente, se tem em abund\'e2ncia.\par
+Uma forma simples de aplicar o aprendizado semi supervisionado \ul\'e9 utilizar os dados rotulados para treinar um modelo inicial. Esse modelo inicial ser\'e1, ent\'e3o, aplicado aos dados rotulados com a finalidade de gerar novos dados rotulados.\ulnone  Esses novos dados rotulados podem conter erros, obviamente, pois prov\'eam de uma anota\'e7\'e3o autom\'e1tica. Dessa forma, a escolha de um m\'e9todo de treinamento que indique a confiabilidade de suas classifica\'e7\'f5es \'e9 muito importante, pois permite escolher apenas as anota\'e7\'f5es que forem feitas com alta confiabilidade. \ul Os exemplos com alta confiabilidade podem se juntar aos exemplos gerados manualmente e um novo modelo ser\'e1 treinado com mais dados anotados\ulnone .\par
+O algoritmo SVM, por exemplo, fornece, para cada classifica\'e7\'e3o, a dist\'e2ncia ao hiperplano de separa\'e7\'e3o entre as classes do problema. Quanto maior for essa dist\'e2ncia, maior a confiabilidade de\par
+classifica\'e7\'e3o (consegue dizer o porqu\'ea?).\par
+O processo descrito anteriormente \'e9 conhecido como \b\f2 self-training\b0\f0 , um m\'e9todo de treinamento semi-supervisionado. Existem outros algoritmos consagrados no paradigma semi supervisionado, dentre os quais podemos citar o \b\f2 co-training \b0\f0 e suas varia\'e7\'f5es (conhecidas como multivis\'e3o). Na realidade esses m\'e9todos s\'e3o encapsuladores de outros algoritmos de aprendizado autom\'e1tico.\par
+\par
+\b RESUMO:\par
+\b0\par
+Em resumo, o cap\'edtulo sobre Machine Learning (Aprendizado de M\'e1quina) abordou as habilidades necess\'e1rias para lidar com t\'e9cnicas de aprendizado de m\'e1quina e a constru\'e7\'e3o de algoritmos inteligentes. O texto destacou a import\'e2ncia do aprendizado de m\'e1quina em cen\'e1rios complexos onde n\'e3o \'e9 vi\'e1vel programar regras expl\'edcitas. Um exemplo foi dado com \ul um carro aut\'f4nomo que precisa aprender a navegar em ambientes variados\ulnone . O autor discutiu a defini\'e7\'e3o de aprendizado de m\'e1quina, conforme definido por Mitchell (1997), \b como a melhoria do desempenho em uma tarefa atrav\'e9s da experi\'eancia\b0 .\par
+Foram apresentados exemplos de tarefas de \ul previs\'e3o meteorol\'f3gica e reconhecimento de fala, \ulnone destacando a diversidade de algoritmos que podem ser utilizados para identificar padr\'f5es e criar modelos de aprendizado. As etapas principais do aprendizado autom\'e1tico foram detalhadas, desde a sele\'e7\'e3o dos dados at\'e9 a avalia\'e7\'e3o do modelo gerado. Foi ressaltada a import\'e2ncia da rotula\'e7\'e3o dos dados, balanceamento, extra\'e7\'e3o e sele\'e7\'e3o de atributos, al\'e9m do treinamento e avalia\'e7\'e3o do modelo. A relev\'e2ncia da avalia\'e7\'e3o cont\'ednua e a possibilidade de refinamentos foram abordadas para melhorar a solu\'e7\'e3o ao longo do tempo. A taxonomia do aprendizado autom\'e1tico foi apresentada, com os paradigmas de aprendizado supervisionado, semi supervisionado e n\'e3o supervisionado.\par
+O autor explorou exemplos de algoritmos de aprendizado para cada paradigma, incluindo \'c1rvores de Decis\'e3o, SVM e Regress\'e3o Linear para aprendizado supervisionado, K-means para agrupamento no aprendizado n\'e3o supervisionado, e tamb\'e9m abordou a abordagem semissupervisionada utilizando m\'e9todos como self-training. No geral, o cap\'edtulo oferece uma vis\'e3o abrangente e clara sobre as principais ideias, etapas e t\'e9cnicas do aprendizado de m\'e1quina, demonstrando como essa \'e1rea \'e9 essencial para lidar com problemas complexos e dados diversos.\par
+\par
+ATIVIDADES:\line\par
+1. Por que o aprendizado de m\'e1quina \'e9 \'fatil em cen\'e1rios complexos?\par
+2. O que \'e9 um exemplo de aplica\'e7\'e3o do aprendizado de m\'e1quina mencionado no texto?\par
+3. Quais s\'e3o os tr\'eas principais paradigmas de aprendizado de m\'e1quina?\par
+4. Explique o que \'e9 uma \'e1rvore de decis\'e3o e como ela funciona no contexto do aprendizado\par
+supervisionado.\par
+5. Como o algoritmo K-means \'e9 utilizado para realizar o agrupamento de dados?\par
+6. Quais s\'e3o as etapas principais no desenvolvimento de uma solu\'e7\'e3o usando aprendizado autom\'e1tico?\par
+7. Quais s\'e3o os principais paradigmas de aprendizado de m\'e1quina mencionados no texto? D\'ea exemplos de tarefas associadas a cada paradigma.\par
+8. O que \'e9 aprendizado semi supervisionado? Explique como o m\'e9todo de treinamento self-training funciona.\par
+9. Explique como o algoritmo Support Vector Machines (SVM) \'e9 utilizado para classifica\'e7\'e3o de dados e como ele lida com problemas multiclasse.\par
+10. Discuta as diferen\'e7as entre os paradigmas de aprendizado supervisionado, n\'e3o supervisionado e semi supervisionado. Forne\'e7a exemplos de cada um.\par
+\par
+RESPOSTAS:\par
+\cf9\par
+1. O aprendizado de m\'e1quina \'e9 \'fatil em cen\'e1rios complexos porque pode lidar com grandes volumes de dados e identificar padr\'f5es que podem n\'e3o ser facilmente percept\'edveis para os seres humanos. Ele pode automatizar processos de tomada de decis\'e3o, fornecer insights valiosos a partir de dados brutos e melhorar a precis\'e3o em tarefas como classifica\'e7\'e3o, previs\'e3o e agrupamento.\par
+\par
+2. Um exemplo de aplica\'e7\'e3o do aprendizado de m\'e1quina mencionado no texto \'e9 a an\'e1lise de listas de compras em supermercados para otimizar opera\'e7\'f5es com base no comportamento dos compradores. Outro exemplo \'e9 a previs\'e3o de pre\'e7os de produtos em grandes portais de vendas pela internet.\par
+\par
+3. Os tr\'eas principais paradigmas de aprendizado de m\'e1quina s\'e3o: supervisionado, n\'e3o supervisionado e semi supervisionado.\par
+\par
+4. Uma \'e1rvore de decis\'e3o \'e9 uma estrutura de \'e1rvore que representa um conjunto de decis\'f5es e suas poss\'edveis consequ\'eancias. No contexto do aprendizado supervisionado, uma \'e1rvore de decis\'e3o \'e9 uma fun\'e7\'e3o que toma como entrada um conjunto de valores e retorna uma decis\'e3o. Ela funciona dividindo o conjunto de dados em subconjuntos menores com base nos valores de atributos, at\'e9 chegar a uma decis\'e3o.\par
+\par
+5. O algoritmo K-means \'e9 utilizado para realizar o agrupamento de dados dividindo o conjunto de dados em K grupos, onde K \'e9 especificado pelo usu\'e1rio. O algoritmo inicialmente atribui aleatoriamente K centr\'f3ides e depois itera para otimizar a posi\'e7\'e3o desses centr\'f3ides, minimizando a dist\'e2ncia entre os pontos de dados e os centr\'f3ides de seus grupos correspondentes.\par
+\par
+6. As etapas principais no desenvolvimento de uma solu\'e7\'e3o usando aprendizado autom\'e1tico incluem: aquisi\'e7\'e3o e prepara\'e7\'e3o de dados, escolha do algoritmo de aprendizado, treinamento do modelo, avalia\'e7\'e3o do modelo e implanta\'e7\'e3o do modelo em um ambiente de produ\'e7\'e3o.\par
+\par
+7. Os principais paradigmas de aprendizado de m\'e1quina mencionados no texto s\'e3o: supervisionado, n\'e3o supervisionado e semi supervisionado. Exemplos de tarefas associadas a cada paradigma incluem classifica\'e7\'e3o e regress\'e3o para o supervisionado, agrupamento e detec\'e7\'e3o de outliers para o n\'e3o supervisionado, e m\'e9todos que combinam dados rotulados e n\'e3o rotulados para o semi supervisionado.\par
+\par
+8. O aprendizado semi supervisionado \'e9 uma abordagem que combina dados rotulados e n\'e3o rotulados para melhorar o desempenho do modelo. O m\'e9todo de treinamento self-training funciona treinando um modelo inicial com dados rotulados e depois usando esse modelo para rotular dados n\'e3o rotulados. Esses dados rotulados automaticamente podem conter erros, portanto, \'e9 importante usar m\'e9todos que indiquem a confiabilidade das classifica\'e7\'f5es.\par
+\par
+9. O algoritmo Support Vector Machines (SVM) \'e9 utilizado para classifica\'e7\'e3o de dados criando um hiperplano de separa\'e7\'e3o entre duas classes. Ele lida com problemas multiclasse treinando diversos classificadores bin\'e1rios e usando alguma m\'e9trica para escolher uma das classes.\par
+\par
+10. As diferen\'e7as entre os paradigmas de aprendizado s\'e3o:\par
+   - Supervisionado: usa dados rotulados para treinar o modelo, onde a resposta desejada \'e9 conhecida.\par
+   - N\'e3o supervisionado: n\'e3o requer dados rotulados e busca identificar padr\'f5es ou estruturas nos dados.\par
+   - Semi supervisionado: combina dados rotulados e n\'e3o rotulados para treinar o modelo, aproveitando informa\'e7\'f5es adicionais dos dados n\'e3o rotulados.\par
+\cf3\par
+}
+ 

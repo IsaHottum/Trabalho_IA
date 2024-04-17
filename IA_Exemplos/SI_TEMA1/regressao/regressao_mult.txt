@@ -1,0 +1,42 @@
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from sklearn.preprocessing import MinMaxScaler
+
+# Dados
+data = {
+    'ID': [1, 2, 3, 4, 5, 6, 7, 8],
+    'HorasEstudo': [12, 22, 115, 31, 0, 5, 92, 57],
+    'HorasSono': [6, 6.5, 4, 9, 10, 8, 6, 8],
+    'Simulado': [0.78, 0.24, 1.0, 0.67, 0.58, 0.78, 0.82, 0.91],
+    'Prova': [0.93, 0.68, 0.95, 0.75, 0.51, 0.60, None, None]
+}
+
+df = pd.DataFrame(data)
+
+# Normalizando os dados
+scaler = MinMaxScaler()
+scaled_data = scaler.fit_transform(df[['HorasEstudo', 'HorasSono', 'Simulado', 'Prova']])
+df[['HorasEstudo', 'HorasSono', 'Simulado', 'Prova']] = scaled_data
+
+# Dividindo os dados em features e target
+X_train = df[['HorasEstudo', 'HorasSono', 'Simulado']].values[:6]
+y_train = df['Prova'].values[:6]
+
+X_test = df[['HorasEstudo', 'HorasSono', 'Simulado']].values[6:]
+y_test = df['Prova'].values[6:]
+
+# Definindo o modelo
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(10, activation='relu', input_shape=(3,)),
+    tf.keras.layers.Dense(1)
+])
+
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+# Treinando o modelo
+model.fit(X_train, y_train, batch_size=2, epochs=1000, verbose=0)
+
+# Fazendo previsões
+predictions = model.predict(X_test)
+print(predictions)
