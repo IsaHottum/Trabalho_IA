@@ -12,7 +12,7 @@
 
 <li><strong>Adobe FireFly:</strong> Ferramenta escolhida para criar imagens que complementam o conteúdo do site.</li>
 
-<li><strong>Vidnoz AI:</strong> Ferramenta escolhida para criar um vídeo totalmente personalizado pela Inteligência Artificial. <a href="https://share.vidnoz.com/aivideo?id=3683828&play_source=Email" target="_blank" rel="noopener noreferrer">Assista ao vídeo</a></li>
+<li><strong>Vidnoz AI:</strong> Ferramenta escolhida para criar um vídeo totalmente personalizado pela Inteligência Artificial. <a href="https://share.vidnoz.com/aivideo?id=3683828&play_source=Email" target="_blank">Assista ao vídeo</a></li>
 
 <h2>Resultados</h2>
 <p>Um site completo e informativo que oferece uma experiência de usuário enriquecedora no campo da IA é o resultado final. Podemos criar recursos valiosos para estudantes, profissionais e entusiastas da IA ao utilizar tecnologias de IA em todo o processo de desenvolvimento. Este estudo mostra como a Inteligência Artificial pode ajudar a inovar em várias áreas, como o desenvolvimento web.</p>
